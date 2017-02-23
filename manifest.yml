@@ -1,0 +1,19 @@
+image: ryansch/openvpn:latest
+manifests:
+  -
+    image: ryansch/openvpn:latest-amd64
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: ryansch/openvpn:latest-arm32v6
+    platform:
+      architecture: arm
+      os: linux
+      variant: v6
+  # -
+  #   image: ryansch/openvpn:latest-arm64v8
+  #   platform:
+  #     architecture: arm64
+  #     os: linux
+  #     variant: v8
