@@ -1,9 +1,13 @@
+FROM multiarch/qemu-user-static:aarch64 as qemu
+
 # Original credit: https://github.com/jpetazzo/dockvpn
+# Upstream credit: https://github.com/kylemanna/openvpn
 
 # Smallest base image
-FROM aarch64/alpine:3.5
+FROM arm64v8/alpine:latest
+LABEL maintainer="Ryan Schlesinger <ryan@ryanschlesinger.com>"
 
-LABEL maintainer="Kyle Manna <kyle@kylemanna.com>"
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories && \
     echo "http://dl-4.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \

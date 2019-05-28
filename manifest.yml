@@ -6,14 +6,14 @@ manifests:
       architecture: amd64
       os: linux
   -
-    image: ryansch/openvpn:latest-arm32v6
+    image: ryansch/openvpn:latest-arm32v7
     platform:
       architecture: arm
       os: linux
-      variant: v6
-  # -
-  #   image: ryansch/openvpn:latest-arm64v8
-  #   platform:
-  #     architecture: arm64
-  #     os: linux
-  #     variant: v8
+      variant: v7
+  -
+    image: ryansch/openvpn:latest-arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8

@@ -1,20 +1,13 @@
 FROM multiarch/qemu-user-static:arm as qemu
 
-FROM alpine:latest as untar
-
-# Due to a missing slash, the qemu-user-static image has
-# the binary copied to the _file_ /usr/bin
-COPY --from=qemu /usr/bin /tmp/qemu-arm-static.tar.gz
-RUN tar -C /usr/bin -zxvf /tmp/qemu-arm-static.tar.gz
-
 # Original credit: https://github.com/jpetazzo/dockvpn
 # Upstream credit: https://github.com/kylemanna/openvpn
 
 # Smallest base image
-FROM arm32v6/alpine:latest
-LABEL maintainer="Ryan Schlesinger <ryan@outstand.com>"
+FROM arm32v7/alpine:latest
+LABEL maintainer="Ryan Schlesinger <ryan@ryanschlesinger.com>"
 
-COPY --from=untar /usr/bin/qemu-arm-static /usr/bin/qemu-arm-static
+COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin/qemu-arm-static
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
