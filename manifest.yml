@@ -1,18 +1,18 @@
-image: ryansch/openvpn:latest
+image: appartment/openvpn-rpi:latest
 manifests:
   -
-    image: ryansch/openvpn:latest-amd64
+    image: appartment/openvpn-rpi:latest-amd64
     platform:
       architecture: amd64
       os: linux
   -
-    image: ryansch/openvpn:latest-arm32v7
+    image: appartment/openvpn-rpi:latest-arm32v7
     platform:
       architecture: arm
       os: linux
       variant: v7
   -
-    image: ryansch/openvpn:latest-arm64v8
+    image: appartment/openvpn-rpi:latest-arm64v8
     platform:
       architecture: arm64
       os: linux
